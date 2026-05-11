@@ -70,16 +70,25 @@ const quickTools = [
   { label: "Fare Estimator", icon: PhilippinePeso },
 ]
 
+/** Intrinsic size of `assets/backgroundHome.png` — hero matches this aspect & max width */
+const HERO_BG_WIDTH = 1774
+const HERO_BG_HEIGHT = 887
+
 export default function Home() {
   return (
     <div className="relative -mx-4 space-y-0 pb-6 md:-mx-6">
-      <section className="relative min-h-[min(100svh,960px)] overflow-hidden rounded-b-[2rem] shadow-[0_16px_48px_rgba(6,26,51,0.14)] md:rounded-b-[2.5rem]">
-        {/* Artwork */}
+      <section
+        className="relative mx-auto w-full max-w-[1774px] overflow-hidden rounded-b-[2rem] shadow-[0_16px_48px_rgba(6,26,51,0.14)] md:rounded-b-[2.5rem]"
+        style={{ aspectRatio: `${HERO_BG_WIDTH} / ${HERO_BG_HEIGHT}` }}
+      >
+        {/* Artwork — fills hero box (same proportions as backgroundHome.png) */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroBackground}
             alt=""
-            className="h-full w-full scale-[1.03] object-cover object-[center_24%] sm:object-[center_20%] lg:object-[center_30%]"
+            width={HERO_BG_WIDTH}
+            height={HERO_BG_HEIGHT}
+            className="h-full w-full object-cover object-center"
           />
           <div
             className="absolute inset-0 bg-gradient-to-r from-[#fff9ef] via-[#fff9ef]/92 to-transparent sm:via-[#fff9ef]/65 md:max-w-[62%] md:via-[#fff9ef]/35 md:to-transparent lg:max-w-[55%]"
@@ -96,8 +105,8 @@ export default function Home() {
           <div className="absolute inset-0 ring-1 ring-inset ring-white/15" aria-hidden />
         </div>
 
-        {/* Hero content + mascot */}
-        <div className="relative z-[1] mx-auto grid min-h-[min(88svh,860px)] max-w-6xl grid-cols-1 items-end gap-6 px-4 pb-36 pt-12 sm:gap-8 sm:px-6 sm:pb-40 sm:pt-16 md:min-h-[min(90svh,880px)] md:pb-44 md:pt-20 lg:grid-cols-[minmax(0,1.08fr)_minmax(240px,440px)] lg:items-end lg:gap-4 lg:pb-48">
+        {/* Hero content + mascot — layered on top of fixed-aspect hero */}
+        <div className="absolute inset-0 z-[1] mx-auto grid h-full max-w-6xl grid-cols-1 content-end items-end gap-4 px-4 pb-6 pt-8 sm:gap-6 sm:px-6 sm:pb-8 sm:pt-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(200px,36%)] lg:items-end lg:gap-4 lg:pb-8 lg:pt-12">
           <motion.div
             className="relative w-full max-w-xl justify-self-start rounded-[1.75rem] border border-white/55 bg-white/[0.22] p-6 shadow-[0_24px_80px_-20px_rgba(6,26,51,0.28)] ring-1 ring-white/40 backdrop-blur-2xl sm:rounded-[2rem] sm:p-8 md:p-10 md:ring-white/50"
             initial="hidden"
@@ -149,7 +158,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="relative hidden h-[min(42vh,380px)] justify-self-end lg:block"
+            className="relative hidden h-[min(38%,320px)] max-h-[85%] justify-self-end lg:block"
             initial={{ opacity: 0, x: 24, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -157,7 +166,7 @@ export default function Home() {
             <img
               src={profileBot}
               alt="SakAI commute buddy"
-              className="absolute right-0 bottom-0 max-h-[min(52vh,440px)] w-auto max-w-[100%] object-contain object-bottom [filter:drop-shadow(0_28px_48px_rgba(6,26,51,0.4))]"
+              className="absolute right-0 bottom-0 max-h-full w-auto max-w-full object-contain object-bottom [filter:drop-shadow(0_28px_48px_rgba(6,26,51,0.4))]"
               width={440}
               height={440}
             />
@@ -165,7 +174,7 @@ export default function Home() {
 
           {/* Mobile mascot peek */}
           <motion.div
-            className="pointer-events-none relative -mt-4 flex justify-end justify-self-end lg:hidden"
+            className="pointer-events-none relative flex justify-end justify-self-end lg:hidden"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.5 }}
@@ -173,20 +182,21 @@ export default function Home() {
             <img
               src={profileBot}
               alt=""
-              className="h-36 w-auto object-contain opacity-95 [filter:drop-shadow(0_16px_28px_rgba(6,26,51,0.25))] sm:h-44"
+              className="h-28 w-auto object-contain opacity-95 [filter:drop-shadow(0_16px_28px_rgba(6,26,51,0.25))] sm:h-36"
               width={200}
               height={200}
             />
           </motion.div>
         </div>
+      </section>
 
-        {/* Route planning bar */}
-        <motion.div
-          className="relative z-[2] mx-auto -mt-8 max-w-5xl px-4 sm:-mt-12 sm:px-6"
-          initial="hidden"
-          animate="show"
-          variants={routeBarReveal}
-        >
+      {/* Route planning bar (below hero — hero height = background image aspect only) */}
+      <motion.div
+        className="relative z-[2] mx-auto mt-4 max-w-5xl px-4 sm:mt-6 sm:px-6"
+        initial="hidden"
+        animate="show"
+        variants={routeBarReveal}
+      >
           <div className="rounded-2xl border border-white/25 bg-[var(--navy)] p-4 shadow-[0_24px_56px_rgba(6,26,51,0.5)] sm:p-5 md:rounded-3xl md:p-6">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-3">
               <div className="group relative min-h-[56px] flex-1 rounded-xl bg-white/10 px-3 py-2.5 ring-1 ring-white/15 transition focus-within:bg-white/[0.14] focus-within:ring-2 focus-within:ring-[#FFB800]/45">
@@ -277,8 +287,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </motion.div>
-      </section>
+      </motion.div>
 
       {/* Features + stats */}
       <div className="mx-auto mt-16 max-w-6xl px-4 sm:px-6 md:mt-20">
