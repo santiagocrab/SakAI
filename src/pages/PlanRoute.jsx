@@ -1,24 +1,7 @@
 import { useState } from "react"
-import {
-  Accessibility,
-  ArrowLeftRight,
-  BusFront,
-  Clock,
-  Moon,
-  MoreHorizontal,
-  PhilippinePeso,
-  Search,
-  User,
-} from "lucide-react"
+import { ArrowLeftRight, BusFront, Clock, Search } from "lucide-react"
 import RouteMap from "../components/RouteMap"
 import { planMapLegend, planRouteCards } from "../data/mockData"
-
-const quickTools = [
-  { label: "First Timer Mode", icon: User, wrap: "bg-violet-100 text-violet-700" },
-  { label: "Accessibility Mode", icon: Accessibility, wrap: "bg-sky-100 text-sky-700" },
-  { label: "Nighttime Check", icon: Moon, wrap: "bg-amber-100 text-amber-800" },
-  { label: "Fare Estimator", icon: PhilippinePeso, wrap: "bg-emerald-100 text-emerald-800" },
-]
 
 export default function PlanRoute() {
   const [from, setFrom] = useState("SM City Iloilo")
@@ -115,42 +98,7 @@ export default function PlanRoute() {
               </button>
             </div>
           </div>
-          <div className="mt-4 flex flex-wrap gap-2 border-t border-white/10 pt-4">
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 ring-1 ring-white/10 hover:bg-white/15"
-            >
-              <MoreHorizontal size={14} />
-              More Options
-            </button>
-            {quickTools.map(({ label, icon: Icon }) => (
-              <button
-                key={label}
-                type="button"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 ring-1 ring-white/10 hover:bg-white/15"
-              >
-                <Icon size={14} />
-                {label}
-              </button>
-            ))}
-          </div>
         </section>
-
-        {/* Quick tools mobile */}
-        <div className="flex flex-wrap gap-2 lg:hidden">
-          {quickTools.map(({ label, icon: Icon, wrap }) => (
-            <button
-              key={label}
-              type="button"
-              className="inline-flex items-center gap-2 rounded-full border border-[var(--light-gray)] bg-white px-3 py-2 text-xs font-semibold text-[var(--navy)]"
-            >
-              <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${wrap}`}>
-                <Icon size={14} />
-              </span>
-              {label}
-            </button>
-          ))}
-        </div>
 
         {/* Route cards */}
         <section className="space-y-4">

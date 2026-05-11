@@ -3,7 +3,7 @@ import { MessageCircle, Send, X } from "lucide-react"
 import profileBot from "@assets/ProfileBot.png"
 
 const samplePrompts = [
-  "Ano sakyan ko from SM City to WVSU?",
+  "What should I ride from SM City to WVSU?",
   "Cheapest route to Molo Church?",
   "May jeep pa after 9 PM?",
   "First time ko, paano sumakay?",

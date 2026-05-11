@@ -1,5 +1,6 @@
 import { ArrowRight, CircleUserRound, Eye, Globe, Lock, Mail } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
+import FareEstimatorStrip from "../components/FareEstimatorStrip"
 import Input from "../components/Input"
 import SakaiLogoMark from "../components/SakaiLogoMark"
 import loginBackground from "@assets/LogInbackground.png"
@@ -170,6 +171,10 @@ export default function Login() {
               </Link>
             </p>
           </div>
+        </div>
+
+        <div className="mx-auto w-full max-w-6xl px-4 pb-4 sm:px-8">
+          <FareEstimatorStrip variant="login" />
         </div>
 
         <footer className="border-t border-white/40 bg-white/90 px-4 py-3 backdrop-blur-md sm:px-8">

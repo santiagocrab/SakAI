@@ -1,17 +1,12 @@
 import { motion } from "framer-motion"
 import {
-  Accessibility,
   ArrowLeftRight,
   Bookmark,
   Clock,
-  Compass,
   Heart,
   LocateFixed,
   MessageCircle,
-  Moon,
-  MoreHorizontal,
   Navigation,
-  PhilippinePeso,
   Search,
   Sparkles,
   Users,
@@ -62,14 +57,6 @@ const routeBarReveal = {
   },
 }
 
-const quickTools = [
-  { label: "More Options", icon: MoreHorizontal },
-  { label: "First Timer Mode", icon: Compass },
-  { label: "Accessibility Mode", icon: Accessibility },
-  { label: "Nighttime Check", icon: Moon },
-  { label: "Fare Estimator", icon: PhilippinePeso },
-]
-
 /** Intrinsic size of `assets/backgroundHome.png` — hero matches this aspect & max width */
 const HERO_BG_WIDTH = 1774
 const HERO_BG_HEIGHT = 887
@@ -108,36 +95,36 @@ export default function Home() {
         {/* Hero content + mascot — layered on top of fixed-aspect hero */}
         <div className="absolute inset-0 z-[1] mx-auto grid h-full max-w-6xl grid-cols-1 content-end items-end gap-4 px-4 pb-6 pt-8 sm:gap-6 sm:px-6 sm:pb-8 sm:pt-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(200px,36%)] lg:items-end lg:gap-4 lg:pb-8 lg:pt-12">
           <motion.div
-            className="relative w-full max-w-xl justify-self-start rounded-[1.75rem] border border-white/55 bg-white/[0.22] p-6 shadow-[0_24px_80px_-20px_rgba(6,26,51,0.28)] ring-1 ring-white/40 backdrop-blur-2xl sm:rounded-[2rem] sm:p-8 md:p-10 md:ring-white/50"
+            className="relative w-full max-w-xl justify-self-start rounded-[1.75rem] border border-white/45 bg-white/[0.14] p-6 shadow-[0_24px_80px_-20px_rgba(6,26,51,0.26)] ring-1 ring-white/30 backdrop-blur-2xl sm:rounded-[2rem] sm:p-8 md:p-10 md:ring-white/35"
             initial="hidden"
             animate="show"
             variants={heroContainer}
           >
-            <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-br from-white/40 to-transparent opacity-70" />
+            <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-br from-white/28 to-transparent opacity-55" />
             <div className="relative">
               <motion.div variants={heroFade}>
-                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--navy)]/12 bg-white/95 px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--navy)] shadow-sm backdrop-blur-md sm:px-4">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--navy)]/10 bg-white px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--navy)] shadow-[0_2px_12px_rgba(6,26,51,0.06)] sm:px-4">
                   <Sparkles size={15} className="text-[#FFB800]" aria-hidden />
-                  SakAI is here to answer
+                  Iloilo commute, decoded
                 </span>
               </motion.div>
               <motion.h1
                 variants={heroFade}
-                className="font-heading mt-5 text-[clamp(2rem,6vw,3.5rem)] font-extrabold leading-[1.06] tracking-tight text-[#0f1a2e] drop-shadow-[0_1px_0_rgba(255,255,255,0.5)] sm:mt-6 sm:leading-[1.05]"
+                className="font-heading mt-5 text-[clamp(2.1rem,6.2vw,3.65rem)] font-extrabold leading-[1.04] tracking-[-0.02em] text-[#0a1424] sm:mt-6 sm:leading-[1.03]"
               >
-                Ano sakyan ko?
+                What will I ride?
               </motion.h1>
               <motion.p
                 variants={heroFade}
-                className="mt-3 text-lg font-bold text-[var(--navy)] sm:mt-4 sm:text-xl md:text-2xl md:leading-snug"
+                className="mt-3 max-w-[22ch] text-xl font-bold leading-tight text-[var(--navy)] sm:mt-4 sm:text-2xl md:text-[1.65rem] md:leading-snug"
               >
-                Your AI-powered Iloilo commute guide.
+                The clearest answer before you step out the door.
               </motion.p>
               <motion.p
                 variants={heroFade}
-                className="mt-3 max-w-md text-sm leading-relaxed text-[#172033]/88 sm:mt-4 sm:text-base md:text-[1.05rem]"
+                className="mt-3 max-w-md text-sm leading-relaxed text-[#172033]/90 sm:mt-4 sm:text-base md:text-[1.05rem]"
               >
-                Find jeepney routes, fare estimates, transfers, and travel alerts around Iloilo City.
+                Live-feeling route picks, fare ballparks, transfers, and heads-ups for jeepneys across Iloilo City — built for riders, not spreadsheets.
               </motion.p>
               <motion.div variants={heroFade} className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
                 <Link to="/plan-route" className="inline-flex w-full sm:w-auto">
@@ -268,22 +255,6 @@ export default function Home() {
                   <Search size={19} strokeWidth={2.75} />
                   Find Route
                 </Link>
-              </div>
-            </div>
-
-            <div className="mt-4 border-t border-white/10 pt-4">
-              <p className="mb-2.5 text-[10px] font-bold uppercase tracking-wider text-white/50 lg:hidden">Quick tools</p>
-              <div className="-mx-1 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:flex-wrap sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden">
-                {quickTools.map(({ label, icon: Icon }) => (
-                  <Link
-                    key={label}
-                    to="/plan-route"
-                    className="inline-flex min-h-[44px] shrink-0 snap-start items-center gap-2 rounded-full bg-white/12 px-4 py-2.5 text-sm font-semibold text-white/95 ring-1 ring-white/15 transition hover:bg-white/20 hover:ring-white/25 active:scale-[0.98] sm:min-h-0 sm:px-3.5 sm:py-2 sm:text-xs"
-                  >
-                    <Icon size={17} strokeWidth={2} className="shrink-0 opacity-90" />
-                    {label}
-                  </Link>
-                ))}
               </div>
             </div>
           </div>
