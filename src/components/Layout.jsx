@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import { Home, MapPinned, MessageCircle, Sun, User } from "lucide-react"
 import { navItems } from "../data/mockData"
-import FareEstimatorStrip from "./FareEstimatorStrip"
 import FloatingChatbot from "./FloatingChatbot"
 import SakaiLogoMark from "./SakaiLogoMark"
 
@@ -106,10 +105,6 @@ export default function Layout({ children }) {
           </div>
         </div>
       </header>
-
-      <div className="mx-auto w-full max-w-6xl px-4 pt-4 pb-2 md:px-6 md:pt-5 md:pb-3">
-        <FareEstimatorStrip />
-      </div>
 
       <main className="mx-auto w-full max-w-6xl px-4 py-6 md:px-6 md:py-8">{children}</main>
 
