@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #061a33;
+  --midnight-blue: #0a2347;
+  --iloilo-blue: #0b4f8a;
+  --gold: #f8b91e;
+  --warm-gold: #dfa21b;
+  --route-red: #d92323;
+  --cream: #fff9ef;
+  --soft-beige: #f3e7d3;
+  --white: #ffffff;
+  --light-gray: #e7eaf0;
+  --text-gray: #6b7280;
+  --charcoal: #172033;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: linear-gradient(155deg, var(--cream) 5%, #fff 30%, #eef5ff 100%);
+  color: var(--charcoal);
+}
+
+.font-heading {
+  font-family: Poppins, Inter, system-ui, sans-serif;
+}
+
+#root {
+  min-height: 100svh;
+}
